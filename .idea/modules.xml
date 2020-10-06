@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/pet-clinic.iml" filepath="$PROJECT_DIR$/.idea/pet-clinic.iml" />
+      <module fileurl="file://$PROJECT_DIR$/pet-clinic-Data/pet-clinic-Data.iml" filepath="$PROJECT_DIR$/pet-clinic-Data/pet-clinic-Data.iml" />
+      <module fileurl="file://$PROJECT_DIR$/pet-clinic-Web/pet-clinic-Web.iml" filepath="$PROJECT_DIR$/pet-clinic-Web/pet-clinic-Web.iml" />
+    </modules>
+  </component>
+</project>
