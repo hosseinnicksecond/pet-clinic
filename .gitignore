@@ -141,3 +141,4 @@ Desktop.ini
 .eslintcache
 /pet-clinic-Web/target/
 /pet-clinic-Data/target/
+/release.properties
