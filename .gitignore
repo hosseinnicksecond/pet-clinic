@@ -142,3 +142,6 @@ Desktop.ini
 /pet-clinic-Web/target/
 /pet-clinic-Data/target/
 /release.properties
+/pom.xml.releaseBackup
+/pet-clinic-Data/pom.xml.releaseBackup
+/pet-clinic-Web/pom.xml.releaseBackup
