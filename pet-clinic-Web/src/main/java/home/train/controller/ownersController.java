@@ -3,12 +3,12 @@ package home.train.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-@RequestMapping("/vets")
+@RequestMapping("/owners")
 @Controller
-public class vetsController {
+public class ownersController {
 
     @RequestMapping({"","/list"})
-    public String vetList(){
-        return "vets/list";
+    public String getOwnerList(){
+        return "owners/list";
     }
 }
