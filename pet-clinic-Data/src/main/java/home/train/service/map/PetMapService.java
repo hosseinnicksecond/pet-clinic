@@ -2,10 +2,11 @@ package home.train.service.map;
 
 import home.train.model.Pet;
 import home.train.service.PetService;
+import org.springframework.stereotype.Service;
 
 import java.util.Set;
 
-
+@Service
 public class PetMapService extends AbstractMapService<Pet , Long> implements PetService {
 
     @Override

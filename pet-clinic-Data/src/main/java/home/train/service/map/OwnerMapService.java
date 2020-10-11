@@ -2,9 +2,11 @@ package home.train.service.map;
 
 import home.train.model.Owner;
 import home.train.service.OwnerService;
+import org.springframework.stereotype.Service;
 
 import java.util.Set;
 
+@Service
 public class OwnerMapService extends AbstractMapService<Owner ,Long> implements OwnerService {
 
     @Override
