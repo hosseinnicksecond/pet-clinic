@@ -2,7 +2,6 @@ package home.train.service;
 
 import home.train.model.Owner;
 
-import java.util.Set;
 
 public interface OwnerService extends CrudService<Owner ,Long> {
 
