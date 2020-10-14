@@ -1,11 +1,9 @@
 package home.train.bootstrap;
 
-import home.train.model.Owner;
-import home.train.model.Pet;
-import home.train.model.PetType;
-import home.train.model.Vet;
+import home.train.model.*;
 import home.train.service.OwnerService;
 import home.train.service.PetTypeService;
+import home.train.service.SpecialitiesService;
 import home.train.service.VetService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
@@ -18,16 +16,22 @@ public class DataLoader implements CommandLineRunner {
    private final OwnerService ownerService;
    private final VetService vetService;
    private final PetTypeService petTypeService;
+   private final SpecialitiesService specialitiesService;
 
-    public DataLoader(OwnerService ownerService, VetService vetService, PetTypeService petTypeService) {
+    public DataLoader(OwnerService ownerService, VetService vetService, PetTypeService petTypeService, SpecialitiesService specialitiesService) {
         this.ownerService = ownerService;
         this.vetService = vetService;
         this.petTypeService = petTypeService;
+        this.specialitiesService = specialitiesService;
     }
 
     @Override
     public void run(String... args) throws Exception {
 
+        LocalData();
+    }
+
+    private void LocalData() {
         PetType Dog= new PetType();
         Dog.setName("Dog");
         PetType SaveDogPetType=petTypeService.save(Dog);
@@ -71,16 +75,30 @@ public class DataLoader implements CommandLineRunner {
 
         System.out.println("Loaded Owner .....");
 
+        Speciality surgery= new Speciality();
+        surgery.setDescription("Surgery");
+        specialitiesService.save(surgery);
+
+        Speciality radiology= new Speciality();
+        radiology.setDescription("RadioLogy");
+        specialitiesService.save(radiology);
+
+        Speciality dentistry= new Speciality();
+        dentistry.setDescription("Dentistry");
+        specialitiesService.save(dentistry);
+
         Vet vet= new Vet();
         vet.setFirstName("mario");
         vet.setLastName("vega");
-
+        vet.getSpecialitySet().add(surgery);
+        vet.getSpecialitySet().add(radiology);
         vetService.save(vet);
 
         vet=new Vet();
         vet.setFirstName("Nick");
         vet.setLastName("Tommy");
-
+        vet.getSpecialitySet().add(dentistry);
+        vet.getSpecialitySet().add(radiology);
         vetService.save(vet);
 
         System.out.println("Loaded Vet ......");

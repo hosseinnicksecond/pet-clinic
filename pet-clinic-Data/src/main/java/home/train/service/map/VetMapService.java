@@ -1,12 +1,20 @@
 package home.train.service.map;
 
+import home.train.model.Speciality;
 import home.train.model.Vet;
+import home.train.service.SpecialitiesService;
 import home.train.service.VetService;
 import org.springframework.stereotype.Service;
 
 import java.util.Set;
 @Service
 public class VetMapService extends AbstractMapService<Vet, Long> implements VetService {
+
+    private final SpecialitiesService specialitiesService;
+
+    public VetMapService(SpecialitiesService specialitiesService) {
+        this.specialitiesService = specialitiesService;
+    }
 
     @Override
     public Set<Vet> findAll() {
@@ -20,7 +28,18 @@ public class VetMapService extends AbstractMapService<Vet, Long> implements VetS
 
     @Override
     public Vet save(Vet vet) {
-        return super.save(vet);
+        if(vet!=null){
+            if(vet.getSpecialitySet().size()>0){
+                vet.getSpecialitySet().forEach(s ->{
+                    if(s.getId()==null){
+                        Speciality saved=specialitiesService.save(s);
+                        s.setId(saved.getId());
+                    }
+                });
+            }
+            return super.save(vet);
+        }
+        return null;
     }
 
     @Override
