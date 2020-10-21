@@ -21,4 +21,8 @@ public class ownersController {
         model.addAttribute("owners",service.findAll());
         return "owners/list";
     }
+    @RequestMapping("/find")
+    public String getFindPage(){
+        return "notImplement";
+    }
 }
