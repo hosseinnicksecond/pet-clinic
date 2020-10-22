@@ -1,10 +1,7 @@
 package home.train.bootstrap;
 
 import home.train.model.*;
-import home.train.service.OwnerService;
-import home.train.service.PetTypeService;
-import home.train.service.SpecialitiesService;
-import home.train.service.VetService;
+import home.train.service.*;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
@@ -17,12 +14,15 @@ public class DataLoader implements CommandLineRunner {
    private final VetService vetService;
    private final PetTypeService petTypeService;
    private final SpecialitiesService specialitiesService;
+   private final VisitService visitService;
 
-    public DataLoader(OwnerService ownerService, VetService vetService, PetTypeService petTypeService, SpecialitiesService specialitiesService) {
+    public DataLoader(OwnerService ownerService, VetService vetService, PetTypeService petTypeService,
+                      SpecialitiesService specialitiesService, VisitService visitService) {
         this.ownerService = ownerService;
         this.vetService = vetService;
         this.petTypeService = petTypeService;
         this.specialitiesService = specialitiesService;
+        this.visitService = visitService;
     }
 
     @Override
@@ -55,7 +55,14 @@ public class DataLoader implements CommandLineRunner {
         DogPets.setOwner(owner);
         owner.getPets().add(DogPets);
 
+        Visit visit= new Visit();
+        visit.setDate(LocalDate.now());
+        visit.setPet(DogPets);
+        visit.setDescription("for running backward");
+
         ownerService.save(owner);
+
+        visitService.save(visit);
 
         owner= new Owner();
         owner.setLastName("Public");

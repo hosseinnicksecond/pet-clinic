@@ -2,9 +2,10 @@ package home.train.service.map;
 
 import home.train.model.Visit;
 import home.train.service.VisitService;
+import org.springframework.stereotype.Service;
 
 import java.util.Set;
-
+@Service
 public class VisitMapService extends AbstractMapService<Visit,Long> implements VisitService  {
 
     @Override
