@@ -17,8 +17,8 @@ import java.util.Set;
 public class Owner extends Person {
     @Column(name = "address")
     private String address;
-    @Column(name = "phone_number")
-    private String PhoneNumber;
+    @Column(name = "telephone")
+    private String telephone;
     @Column(name = "city")
     private String city;
     @OneToMany(cascade = CascadeType.ALL,mappedBy = "owner")
@@ -29,7 +29,7 @@ public class Owner extends Person {
                  String phoneNumber, String city, Set<Pet> pets) {
         super(id, firstName, lastName);
         this.address = address;
-        PhoneNumber = phoneNumber;
+        telephone = phoneNumber;
         this.city = city;
         this.pets = pets;
     }
