@@ -37,4 +37,9 @@ public class VisitMapService extends AbstractMapService<Visit,Long> implements V
     public void deleteById(Long id) {
        super.deleteById(id);
     }
+
+    @Override
+    public Set<Visit> findVisitByPetId(Long petId) {
+        return null;
+    }
 }

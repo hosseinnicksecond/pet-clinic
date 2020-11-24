@@ -38,10 +38,21 @@ public class Pet extends BaseEntity {
         this.petType = petType;
         this.owner = owner;
         this.birthDay = birthDay;
-        this.visits = visits;
+        if(visits == null || visits.size()>0){
+            this.visits = visits;
+        }
+    }
+
+    public void setVisits(Set<Visit> visits){
+        if(visits !=null && visits.size()>0){
+            this.visits=visits;
+        }
     }
 
     public void addVisit(Visit visit){
+        if (this.visits == null){
+            this.visits=new HashSet<>();
+        }
         this.visits.add(visit);
         visit.setPet(this);
     }

@@ -49,4 +49,9 @@ public class VisitSDService implements VisitService {
     public void deleteById(Long aLong) {
        repository.deleteById(aLong);
     }
+
+    @Override
+    public Set<Visit> findVisitByPetId(Long petId) {
+        return repository.findByPetId(petId);
+    }
 }
