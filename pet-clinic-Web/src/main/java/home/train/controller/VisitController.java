@@ -8,10 +8,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
@@ -25,6 +23,17 @@ public class VisitController {
     public VisitController(VisitService visitService, PetService petService) {
         this.visitService = visitService;
         this.petService = petService;
+    }
+    @InitBinder
+    public void initBind(WebDataBinder dataBinder){
+        dataBinder.setDisallowedFields("id");
+
+//        dataBinder.registerCustomEditor(LocalDate.class, new PropertyEditorSupport() {
+//            @Override
+//            public void setAsText(String text) throws IllegalArgumentException{
+//                setValue(LocalDate.parse(text));
+//            }
+//        });
     }
 
     @ModelAttribute("visit")
