@@ -1,5 +1,6 @@
 package home.train.service.map;
 
+import home.train.model.Owner;
 import home.train.model.Pet;
 import home.train.service.PetService;
 import org.springframework.context.annotation.Profile;
@@ -34,5 +35,10 @@ public class PetMapService extends AbstractMapService<Pet , Long> implements Pet
     @Override
     public void deleteById(Long id) {
          super.deleteById(id);
+    }
+
+    @Override
+    public Pet updatePet(Owner owner, Pet pet) {
+        return null;
     }
 }

@@ -6,6 +6,7 @@ import home.train.service.VisitService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -33,6 +34,7 @@ public class VisitSDService implements VisitService {
     }
 
     @Override
+    @Transactional
     public Visit save(Visit visit) {
         Visit saved=repository.save(visit);
         return saved;

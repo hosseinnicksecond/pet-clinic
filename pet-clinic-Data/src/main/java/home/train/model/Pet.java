@@ -1,6 +1,10 @@
 package home.train.model;
 
-import lombok.*;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -22,9 +26,10 @@ public class Pet extends BaseEntity {
     @JoinColumn(name = "owner_id")
     private Owner owner;
     @Column(name = "birthday")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate birthDay;
     @OneToMany(cascade = CascadeType.ALL,mappedBy = "pet")
-    @Singular private Set<Visit> visits= new HashSet<>();
+    private Set<Visit> visits= new HashSet<>();
 
     @Builder
     public Pet(Long id, String name, PetType petType, Owner owner, LocalDate birthDay, Set<Visit> visits) {
@@ -34,5 +39,10 @@ public class Pet extends BaseEntity {
         this.owner = owner;
         this.birthDay = birthDay;
         this.visits = visits;
+    }
+
+    public void addVisit(Visit visit){
+        this.visits.add(visit);
+        visit.setPet(this);
     }
 }
